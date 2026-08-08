@@ -41,7 +41,7 @@ const CONFIG = {
     description:
       "Two people, countless memories, and a love story still airing new episodes. Press play on us.",
     // Google Drive link to a short looping background video (optional — falls back to a gradient if empty)
-    backgroundVideo: "https://drive.google.com/file/d/1jEsVq7TXl1Eez1Pyr8YtVIfKULz9el5R/view?usp=drivesdk",
+    backgroundVideo: "https://www.pexels.com/video/man-choosing-the-color-of-the-tiles-6567878/",
     backgroundImage: "", // Google Drive link to a still image fallback
   },
 
