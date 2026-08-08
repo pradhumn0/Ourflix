@@ -156,7 +156,7 @@ const PHOTOS = [
   },
   {
     title: "That Trip",
-    image: "https://drive.google.com/file/d/1-2ReJvxKidP5Ko-qx-vAnDNVpHJDofsa/view?usp=drivesdk",
+    image: "assets/photos/1786179720893.png",
     category: "Trips",
   },
 ];
