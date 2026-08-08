@@ -146,17 +146,17 @@ const VIDEOS = [
 const PHOTOS = [
   {
     title: "Golden Hour",
-    image: "",
+    image: "https://drive.google.com/file/d/1-2ReJvxKidP5Ko-qx-vAnDNVpHJDofsa/view?usp=drivesdk",
     category: "Us",
   },
   {
     title: "Coffee Dates",
-    image: "",
+    image: "https://drive.google.com/file/d/1-2ReJvxKidP5Ko-qx-vAnDNVpHJDofsa/view?usp=drivesdk",
     category: "Everyday",
   },
   {
     title: "That Trip",
-    image: "",
+    image: "https://drive.google.com/file/d/1-2ReJvxKidP5Ko-qx-vAnDNVpHJDofsa/view?usp=drivesdk",
     category: "Trips",
   },
 ];
@@ -168,12 +168,12 @@ const PHOTOS = [
 const REELS = [
   {
     title: "30 seconds of us being ridiculous",
-    video: "",
+    video: "https://drive.google.com/file/d/1qHyjy9YUvpAqPkoIyiKe1h6Rg6wpGmvk/view?usp=drivesdk",
     caption: "No context needed.",
   },
   {
     title: "Dancing badly in the kitchen",
-    video: "",
+    video: "https://drive.google.com/file/d/1qHyjy9YUvpAqPkoIyiKe1h6Rg6wpGmvk/view?usp=drivesdk",
     caption: "Still our best duet.",
   },
 ];
