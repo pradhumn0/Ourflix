@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OurFlix</title>
+<meta name="description" content="A personalized Netflix-inspired love story, just for us.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ 1. INTRO LOADER ============ -->
+<div id="screen-loader" class="screen">
+  <div class="loader-shimmer"></div>
+  <div class="loader-logo">Our<span class="accent">Flix</span></div>
+</div>
+
+<!-- ============ 2. WHO'S WATCHING ============ -->
+<div id="screen-profiles" class="screen hidden">
+  <h1 class="profiles-title">Who's Watching?</h1>
+  <div class="profiles-row">
+    <button class="profile-card" data-profile="her" id="profile-her">
+      <span class="profile-avatar" id="avatar-her">❤️</span>
+      <span id="name-her">Her</span>
+    </button>
+    <button class="profile-card" data-profile="me" id="profile-me">
+      <span class="profile-avatar" id="avatar-me">🖤</span>
+      <span id="name-me">Me</span>
+    </button>
+    <button class="profile-card add" tabindex="-1" aria-hidden="true">
+      <span class="profile-avatar">➕</span>
+      <span>Add Profile</span>
+    </button>
+  </div>
+</div>
+
+<!-- ============ 3. LOGIN ============ -->
+<div id="screen-login" class="screen hidden">
+  <form class="login-box" id="login-form" autocomplete="off">
+    <h2>Sign In</h2>
+    <div class="login-field" id="field-username">
+      <label for="input-username">Username</label>
+      <input id="input-username" name="username" type="text" autocomplete="off" required>
+    </div>
+    <div class="login-field" id="field-password">
+      <label for="input-password">Password</label>
+      <input id="input-password" name="password" type="password" autocomplete="off" required>
+    </div>
+    <div class="login-error" id="login-error">Incorrect username or password.</div>
+    <button type="submit" class="btn-primary" id="login-submit">Sign In</button>
+    <div class="login-hint">This is a private, personal site made with love — not a real streaming service.</div>
+  </form>
+</div>
+
+<!-- ============ 4. MAIN APP ============ -->
+<div id="screen-app" class="screen hidden">
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-left">
+      <button class="icon-btn mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">☰</button>
+      <a href="#" class="nav-logo" data-page="home">Our<span class="accent">Flix</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="#" data-page="home" class="active">Home</a>
+        <a href="#" data-page="movies">Movies</a>
+        <a href="#" data-page="memories">Our Memories</a>
+        <a href="#" data-page="gallery">Gallery</a>
+        <a href="#" data-page="letters">Love Letters</a>
+        <a href="#" data-page="reels">Reels</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-search-wrap" id="nav-search-wrap">
+        <input type="text" class="nav-search-input" id="nav-search-input" placeholder="Search memories, photos, letters...">
+        <button class="icon-btn" id="nav-search-btn" aria-label="Search">🔍</button>
+      </div>
+      <button class="icon-btn" id="nav-mylist-btn" aria-label="My List" data-page="mylist">❤️</button>
+      <div class="nav-avatar" id="nav-avatar">❤️</div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#" data-page="home" class="active">Home</a>
+    <a href="#" data-page="movies">Movies</a>
+    <a href="#" data-page="memories">Our Memories</a>
+    <a href="#" data-page="gallery">Gallery</a>
+    <a href="#" data-page="letters">Love Letters</a>
+    <a href="#" data-page="reels">Reels</a>
+    <a href="#" data-page="mylist">My List</a>
+  </div>
+
+  <div class="app-scroll" id="app-scroll">
+
+    <!-- ---- HOME PAGE ---- -->
+    <section class="page active" id="page-home">
+      <div class="hero" id="home-hero">
+        <div class="hero-media" id="hero-media">
+          <div class="fallback-gradient"></div>
+        </div>
+        <div class="hero-scrim"></div>
+        <div class="hero-content">
+          <div class="hero-eyebrow">A Love Story, Now Streaming</div>
+          <h1 class="hero-title" id="hero-title">Us.</h1>
+          <p class="hero-desc" id="hero-desc">Two people, countless memories.</p>
+          <div class="hero-actions">
+            <button class="btn-hero play" id="hero-play">▶ Play</button>
+            <button class="btn-hero list" id="hero-list">❤️ My List</button>
+          </div>
+        </div>
+      </div>
+      <div class="quote-ticker"><span class="heart">❤</span><span id="quote-text">Loading today's quote...</span></div>
+      <div class="rows-wrap" id="home-rows"></div>
+    </section>
+
+    <!-- ---- MOVIES / MEMORIES (also built from VIDEOS, filterable) ---- -->
+    <section class="page" id="page-movies">
+      <div class="page-header"><h1>Movies</h1><p>Every scene we've ever filmed.</p></div>
+      <div class="rows-wrap" id="movies-rows"></div>
+    </section>
+
+    <section class="page" id="page-memories">
+      <div class="page-header"><h1>Our Memories</h1><p>The moments worth replaying.</p></div>
+      <div class="rows-wrap" id="memories-rows"></div>
+    </section>
+
+    <!-- ---- GALLERY ---- -->
+    <section class="page" id="page-gallery">
+      <div class="page-header"><h1>Gallery</h1><p>Every photo, in one place.</p></div>
+      <div class="masonry" id="gallery-grid"></div>
+    </section>
+
+    <!-- ---- LOVE LETTERS ---- -->
+    <section class="page" id="page-letters">
+      <div class="page-header"><h1>Love Letters</h1><p>Tap an envelope to open it.</p></div>
+      <div class="letters-grid" id="letters-grid"></div>
+    </section>
+
+    <!-- ---- REELS ---- -->
+    <section class="page" id="page-reels">
+      <div class="reels-wrap" id="reels-wrap"></div>
+    </section>
+
+    <!-- ---- MY LIST ---- -->
+    <section class="page" id="page-mylist">
+      <div class="page-header"><h1>My List</h1><p>Everything you've loved.</p></div>
+      <div class="mylist-grid" id="mylist-grid"></div>
+    </section>
+
+    <!-- ---- SEARCH RESULTS ---- -->
+    <section class="page" id="page-search">
+      <div class="page-header"><h1>Search Results</h1><p id="search-summary"></p></div>
+      <div id="search-results"></div>
+    </section>
+
+  </div>
+
+  <button class="music-toggle" id="music-toggle" aria-label="Toggle background music">🎵</button>
+</div>
+
+<!-- ============ VIDEO PLAYER ============ -->
+<div class="player-overlay" id="player-overlay">
+  <div class="player-box">
+    <div class="player-video-wrap" id="player-video-wrap">
+      <button class="player-close" id="player-close" aria-label="Close player">✕</button>
+      <video id="player-video" playsinline></video>
+      <div class="player-noSrc" id="player-noSrc" style="display:none;">
+        <div style="font-size:2rem;">🎬</div>
+        <div>Add a Google Drive video link in <code>config.js</code> to play this memory.</div>
+      </div>
+      <div class="player-controls">
+        <input type="range" class="seek-bar" id="seek-bar" min="0" max="100" value="0">
+        <div class="controls-row">
+          <button id="ctrl-playpause" aria-label="Play/Pause">▶</button>
+          <button id="ctrl-mute" aria-label="Mute">🔊</button>
+          <input type="range" class="vol-slider" id="vol-slider" min="0" max="1" step="0.05" value="1">
+          <span class="time" id="ctrl-time">0:00 / 0:00</span>
+          <span class="spacer"></span>
+          <select id="ctrl-speed" aria-label="Playback speed">
+            <option value="0.5">0.5x</option>
+            <option value="1" selected>1x</option>
+            <option value="1.5">1.5x</option>
+            <option value="2">2x</option>
+          </select>
+          <button id="ctrl-pip" aria-label="Picture in picture">⧉</button>
+          <button id="ctrl-fullscreen" aria-label="Fullscreen">⛶</button>
+        </div>
+      </div>
+    </div>
+    <div class="player-info">
+      <h3 id="player-title">Title</h3>
+      <p id="player-desc">Description</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+  <button class="lightbox-nav prev" id="lightbox-prev" aria-label="Previous">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav next" id="lightbox-next" aria-label="Next">›</button>
+  <div class="lightbox-hint">Swipe or use arrow keys to browse</div>
+</div>
+
+<!-- ============ ENVELOPE / LETTER ============ -->
+<div class="envelope-overlay" id="envelope-overlay">
+  <div class="envelope-stage">
+    <button class="env-close" id="env-close" aria-label="Close letter">✕</button>
+    <div class="envelope" id="envelope">
+      <div class="env-back"></div>
+      <div class="env-letter" id="env-letter">
+        <h4 id="env-title">Title</h4>
+        <span class="env-date" id="env-date">Date</span>
+        <div class="env-body" id="env-body">Body</div>
+      </div>
+      <div class="env-flap"></div>
+    </div>
+    <div class="env-hint">Tap the envelope to open</div>
+  </div>
+</div>
+
+<!-- ============ EASTER EGG ============ -->
+<div class="egg-overlay" id="egg-overlay">
+  <div class="egg-particles" id="egg-particles"></div>
+  <h2 id="egg-title">You found the hidden episode.</h2>
+  <p id="egg-message">A secret, just for you.</p>
+  <button class="egg-close" id="egg-close">Close</button>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<audio id="bg-music" loop></audio>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
