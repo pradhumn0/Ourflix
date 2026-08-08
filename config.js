@@ -78,7 +78,7 @@ const VIDEOS = [
     title: "Our First Date",
     description: "The beginning of everything.",
     poster: "",
-    video: "",
+    video: "https://drive.google.com/file/d/1jEsVq7TXl1Eez1Pyr8YtVIfKULz9el5R/view?usp=drivesdk",
     duration: "12m",
     year: "2023",
     category: "Favorite Memories",
